@@ -19,6 +19,9 @@ Route::view('/position', 'position.index')
     ->middleware(['auth', 'verified'])
     ->name('position');
 
+Route::view('/office', 'office.office-page')
+    ->middleware(['auth', 'verified'])
+    ->name('office');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
