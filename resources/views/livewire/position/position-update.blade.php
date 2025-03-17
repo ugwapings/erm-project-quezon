@@ -9,11 +9,13 @@
         <flux:separator variant="subtle" />
         <div class="w-full md:w-1/2 px-2 space-y-6">
             <div class="mb-4">
-                <flux:input type="text" label="Position Name" wire:model="position_name" value="{{ $position_name }}"/>
+                <flux:input type="text" label="Position Name" 
+                wire:model="position_name" value="{{ $position_name }}"/>
             </div>
         </div>
         <div class="flex justify-end mt-4">
-            <flux:button type="submit" variant="primary" wire:click="update">Submit</flux:button>
+            <flux:button type="submit" variant="primary" 
+            wire:click="update">Submit</flux:button>
         </div>
     </flux:modal>
 </div>

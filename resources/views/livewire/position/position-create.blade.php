@@ -2,8 +2,12 @@
     <flux:modal name="create-position">
         <div class="flex justify-between items-center">
             <div>
-                <flux:heading size="xl" level="1">Add Position</flux:heading>
-                <flux:subheading size="sm" class="mb-6">Add New Position</flux:subheading>
+                <flux:heading size="xl" level="1">
+                    Add Position
+                </flux:heading>
+                <flux:subheading size="sm" class="mb-6">
+                    Add New Position
+                </flux:subheading>
             </div>
         </div>
         <flux:separator variant="subtle" />
