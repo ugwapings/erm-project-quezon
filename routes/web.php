@@ -15,9 +15,9 @@ Route::view('/employee', 'employee.index')
     ->middleware(['auth', 'verified'])
     ->name('employee');
 
-Route::view('/setting', 'settings.index')
+Route::view('/position', 'position.index')
     ->middleware(['auth', 'verified'])
-    ->name('setting');
+    ->name('position');
 
 
 Route::middleware(['auth'])->group(function () {

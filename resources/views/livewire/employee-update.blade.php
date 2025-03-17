@@ -62,9 +62,7 @@
                             </select>
                         </div>
                         <flux:input type="date" label="Employment Date" wire:model="employment_date" />
-                        @if(!$this->hideEndOfEmploymentDate)
-                            <flux:input type="date" label="End of Employment Date" wire:model="end_of_employment_date" />
-                        @endif
+                        <flux:input type="date" label="End of Employment Date" wire:model="end_of_employment_date" />
                     </div>
                 </div>
                 <div class="flex justify-end mt-4">
