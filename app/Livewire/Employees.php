@@ -5,22 +5,18 @@ namespace App\Livewire;
 use Flux\Flux;
 use Livewire\Component;
 use App\Models\Employee;
+use Livewire\WithPagination;
 use App\Livewire\EmployeeUpdate;
 
 class Employees extends Component
 {
-
-    public $employees;
+    use WithPagination;
 
     public function render()
     {
-        return view('livewire.employees',[
-            'employees' => Employee::with(['position', 'office'])->get(),
+        return view('livewire.employees', [
+            'employees' => Employee::paginate(7),
         ]);
-    }
-
-    public function mount() {
-        $this->employees = Employee::with(['position', 'office'])->get();
     }
 
     public function edit($id) {

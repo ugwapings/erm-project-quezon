@@ -16,31 +16,30 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($employees as $employee)
-                <tr class="hover:bg-gray-50">
-                    <td class="border px-4 py-2 text-center">
-                        {{ $employee->first_name }}
-                        {{ $employee->middle_name }}
-                        {{ $employee->last_name }}
-                    </td>
-                    <td class="border px-4 py-2 text-center">{{ $employee->position->position_name }}</td>
-                    <td class="border px-4 py-2 text-center">{{ $employee->classification }}</td>
-                    <td class="border px-4 py-2 text-center">
-                        <div class="flex justify-center space-x-2">
-                            <flux:button variant="primary" wire:click="edit({{ $employee->id }})">@include('flux.icon.square-pen')</flux:button>
-                            <flux:button variant="danger" wire:click="delete({{ $employee->id }})">@include('flux.icon.eraser')</flux:button>
-                            <flux:button variant="ghost" wire:click="show({{ $employee->id }})">@include('flux.icon.eye')</flux:button>
-                        </div>
-                    </td>
-                </tr>
-                @empty
-                    <tr class="bg-white">
-                        <td colspan="4" class="border px-4 py-2 text-center">
-                            No Employees Found
+                @if (is_array($employees) || is_object($employees))
+                    @foreach ($employees as $employee)
+                    <tr class="hover:bg-gray-50">
+                        <td class="border px-4 py-2 text-center">
+                            {{ $employee->first_name }}
+                            {{ $employee->middle_name }}
+                            {{ $employee->last_name }}
+                        </td>
+                        <td class="border px-4 py-2 text-center">{{ $employee->position->position_name }}</td>
+                        <td class="border px-4 py-2 text-center">{{ $employee->classification }}</td>
+                        <td class="border px-4 py-2 text-center">
+                            <div class="flex justify-center space-x-2">
+                                <flux:button variant="primary" wire:click="edit({{ $employee->id }})">@include('flux.icon.square-pen')</flux:button>
+                                <flux:button variant="danger" wire:click="delete({{ $employee->id }})">@include('flux.icon.eraser')</flux:button>
+                                <flux:button variant="ghost" wire:click="show({{ $employee->id }})">@include('flux.icon.eye')</flux:button>
+                            </div>
                         </td>
                     </tr>
-                @endforelse
+                    @endforeach
+                @endif
             </tbody>
         </table>
+    </div>
+    <div class="mt-3">
+        {{ $employees->links() }}
     </div>
 </div>
