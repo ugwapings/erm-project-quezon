@@ -75,6 +75,10 @@ class EmployeeCreate extends Component
         if ($this->image_path) {
             $validated['image_path'] = $this->image_path->store('images', 'public');
         }
+
+        if ($this->end_of_employment_date === "") {
+            $validated['end_of_employment_date'] = null;
+        }
         
         Employee::create($validated);
 

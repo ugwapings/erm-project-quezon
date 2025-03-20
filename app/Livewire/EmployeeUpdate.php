@@ -100,9 +100,16 @@ class EmployeeUpdate extends Component
 
         $this->employee = Employee::find($this->employee->id);
         
-        if ($this->image_path) {
-            $validated['image_path'] = $this->image_path->store('images', 'public');
+        
+        if ($this->image_path == null || $this->image_path == '') {
+            $validated['image_path'] = $this->employee->image_path;
+        } elseif ($this->image_path instanceof \Illuminate\Http\UploadedFile) {
+            $validated['image_path'] = $this->image_path->store("images", "public");
+        } else {
+            $validated['image_path'] = $this->employee->image_path;
         }
+
+
 
         if ($this->end_of_employment_date === '') {
             $validated['end_of_employment_date'] = null;
