@@ -60,7 +60,7 @@ class EmployeeCreate extends Component
             'suffix' => 'required',
             'address' => 'required',
             'contact_number' => 'required',
-            'image_path' => 'image|nullable',
+            'image_path' => 'nullable',
             'emergency_contact_person' => 'required',
             'emergency_contact_number' => 'required',
             'employment_date' => 'required|date',

@@ -8,9 +8,12 @@ use Livewire\Component;
 use App\Models\Employee;
 use App\Models\Position;
 use Livewire\Attributes\On;
+use Livewire\WithFileUploads;
 
 class EmployeeUpdate extends Component
 {
+    use WithFileUploads;
+    
     protected $listeners = ['editEmployee'];
     public $employee;
     public $employee_id_fill;
@@ -87,40 +90,29 @@ class EmployeeUpdate extends Component
             'emergency_contact_person' => 'required',
             'emergency_contact_number' => 'required',
             'employment_date' => 'required|date',
-            'end_of_employment_date' => 'required|date',
+            'end_of_employment_date' => 'nullable|date',
             'position_id' => 'required',
             'office_id' => 'required',
             'classification' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'date_of_birth' => 'required|date'
         ]);
 
-        $employee = Employee::find($this->employee->id);
+        $this->employee = Employee::find($this->employee->id);
+        
+        if ($this->image_path) {
+            $validated['image_path'] = $this->image_path->store('images', 'public');
+        }
 
-        $employee->employee_id_fill = $this->employee_id_fill;
-        $employee->first_name = $this->first_name;
-        $employee->middle_name = $this->middle_name;
-        $employee->last_name = $this->last_name;
-        $employee->suffix = $this->suffix;
-        $employee->address = $this->address;
-        $employee->contact_number = $this->contact_number;
-        $employee->image_path = $this->image_path;
-        $employee->emergency_contact_person = $this->emergency_contact_person;
-        $employee->emergency_contact_number = $this->emergency_contact_number;
-        $employee->employment_date = $this->employment_date;
-        $employee->end_of_employment_date = $this->end_of_employment_date;
-        $employee->position_id = $this->position_id;
-        $employee->office_id = $this->office_id;
-        $employee->classification = $this->classification;
-        $employee->status = $this->status;
-        $employee->save();
+        if ($this->end_of_employment_date === '') {
+            $validated['end_of_employment_date'] = null;
+        }
+
+        $this->employee->update($validated);
 
         Flux::modal('edit-employee')->close();
 
         return redirect()->to('employee')
                          ->with('success', 'Employee updated successfully'); 
-    }
-
-    public function getHideEndOfEmploymentDateProperty() {
-        return $this->status === 'Employed';
     }
 }

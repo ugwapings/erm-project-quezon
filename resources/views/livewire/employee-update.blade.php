@@ -28,18 +28,26 @@
                         <div class="mb-4">
                             <label for="position_id" class="block text-sm font-medium text-gray-700">Position</label>
                             <select id="position_id" wire:model="position_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option value="">Select Position</option>
                                 @foreach ($positions as $position)
                                     <option value="{{ $position->id }}">{{ $position->position_name }}</option>
                                 @endforeach
                             </select>
+                            @error('position_id')   
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror   
                         </div>
                         <div class="mb-4">
                             <label for="office_id" class="block text-sm font-medium text-gray-700">Office</label>
                             <select id="office_id" wire:model="office_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option value="">Select Office</option>
                                 @foreach ($offices as $office)
                                     <option value="{{ $office->id }}">{{ $office->office_name }}</option>
                                 @endforeach
                             </select>
+                            @error('office_id')   
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror   
                         </div>
                         <div class="mb-4">
                             <label for="classification" class="block text-sm font-medium text-gray-700">Classification</label>
@@ -51,6 +59,9 @@
                                 <option value="Honorarium">Honorarium</option>
                                 <option value="Co-Terminus">Co-Terminus</option>
                             </select>
+                            @error('classification')   
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror   
                         </div>
                         <div class="mb-4">
                             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
@@ -60,6 +71,9 @@
                                 <option value="Retired">Retired</option>
                                 <option value="Separate">Separate</option>
                             </select>
+                            @error('status')   
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror   
                         </div>
                         <flux:input type="date" label="Employment Date" wire:model="employment_date" />
                         <flux:input type="date" label="End of Employment Date" wire:model="end_of_employment_date" />
