@@ -6,9 +6,13 @@ use App\Models\Office;
 use Livewire\Component;
 use App\Models\Employee;
 use App\Models\Position;
+use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
 
 class EmployeeCreate extends Component
 {
+
+    use WithFileUploads;
     
     //dere ibutang tanan nga variable nga gamiton sa view
     public $employee_id_fill;
@@ -31,7 +35,6 @@ class EmployeeCreate extends Component
     public $offices;
     public $classification;
     public $status;
-
 
     public function render()
     {
@@ -57,7 +60,7 @@ class EmployeeCreate extends Component
             'suffix' => 'required',
             'address' => 'required',
             'contact_number' => 'required',
-            'image_path' => 'nullable',
+            'image_path' => 'image|nullable',
             'emergency_contact_person' => 'required',
             'emergency_contact_number' => 'required',
             'employment_date' => 'required|date',
@@ -69,35 +72,15 @@ class EmployeeCreate extends Component
             'date_of_birth' => 'required|date'
         ]);
 
+        if ($this->image_path) {
+            $validated['image_path'] = $this->image_path->store('images', 'public');
+        }
         
-        // Create employee without position and office first
-        $employee = new Employee();
-        $employee->fill($validated);
-        
-        // Associate the position and office
-        $position = Position::findOrFail($validated['position_id']);
-        $office = Office::findOrFail($validated['office_id']);
-        
-        $employee->position()->associate($position);
-        $employee->office()->associate($office);
-        
-        $employee->save();
+        Employee::create($validated);
 
-        $this->reset();
-        // $this->dispatch('employee-created');
-        
+        $this->reset();        
         return redirect()->to('/employee')
                         ->with('success', 'Employee created successfully');
-    }
-
-    public function updatedStatus($value) {
-        if ($value === 'Employed') {
-            $this->end_of_employment_date = null;
-        }
-    }
-
-    public function getHideEndOfEmploymentDateProperty() {
-        return $this->status === 'Employed';
     }
     
 }

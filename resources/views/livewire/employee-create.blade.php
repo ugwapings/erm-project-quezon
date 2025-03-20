@@ -17,7 +17,7 @@
                         <flux:input type="text" label="Address" placeholder="Enter address" wire:model="address" />
                     
                         <flux:input type="tel" label="Contact Number" placeholder="Enter contact number" wire:model="contact_number" />
-                        <flux:input type="file" label="Image" accept="image/*" wire:model="image_path" />
+                        <flux:input type="file" label="Image" enctype="multipart/form-data" wire:model="image_path" />
                         <flux:input type="text" label="Emergency Contact Person" placeholder="Enter emergency contact person" wire:model="emergency_contact_person" />
                         <flux:input type="tel" label="Emergency Contact Number" placeholder="Enter emergency contact number" wire:model="emergency_contact_number" />
                         <flux:input label="Date of birth" type="date" wire:model="date_of_birth" />
@@ -60,17 +60,8 @@
                                 <option value="Separate">Separate</option>
                             </select>
                         </div>
-                        @if($status === 'Retired' || $status === 'Separate')
-                            <div class="mb-4">
-                                <flux:input 
-                                    type="date" 
-                                    label="End of Employment Date" 
-                                    wire:model="end_of_employment_date" 
-                                />
-                            </div>
-                        @endif
                         <flux:input type="date" label="Employment Date" wire:model="employment_date" />
-                        
+                        <flux:input type="date" label="End of Employment Date" wire:model="end_of_employment_date" />
                     </div>
 
                 </div>
