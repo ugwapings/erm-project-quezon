@@ -1,11 +1,30 @@
 <div>
-    <flux:modal name="show-employee" class="md:w-3/4">
+    <flux:modal name="show-employee" 
+                class="md:w-full"
+                style="width: 500ch"
+                >
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">Employee Details</flux:heading>
                 <flux:subheading>Detailed information about the employee</flux:subheading>
             </div>
             
+            <div class="grid grid-cols-1 gap-4 justify-center">
+                @if ($image_path)
+                    <img src="{{'storage/'.$image_path}}" 
+                    alt="Profile"
+                    class="rounded rounded-full"
+                    style="height: 25em; width: 25em;"
+                    >
+                @else
+                    <img src="storage\images\no-photo.png" 
+                    alt="Profile"
+                    class="rounded rounded-full"
+                    style="height: 25em; width: 25em;"
+                    >
+                @endif
+            </div>
+
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-2">
                     <h3 class="font-bold text-gray-700">Employee ID</h3>
@@ -39,20 +58,20 @@
 
                 <div class="space-y-2">
                     <h3 class="font-bold text-gray-700">Contact Information</h3>
-                    <p class="text-gray-600">{{ $contact_number }}</p>
-                    <p class="text-gray-600">{{ $address }}</p>
+                    <p class="text-gray-600">Number: {{ $contact_number }}</p>
+                    <p class="text-gray-600">Address: {{ $address }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Emergency Contact</h3>
-                    <p class="text-gray-600">{{ $emergency_contact_person }}</p>
-                    <p class="text-gray-600">{{ $emergency_contact_number }}</p>
+                    <h3 class="font-bold text-gray-700">Emergency Contact Person</h3>
+                    <p class="text-gray-600">Name: {{ $emergency_contact_person }}</p>
+                    <p class="text-gray-600">Number: {{ $emergency_contact_number }}</p>
                 </div>
 
                 <div class="space-y-2">
                     <h3 class="font-bold text-gray-700">Employment Dates</h3>
                     <p class="text-gray-600">Start: {{ $employment_date }}</p>
-                    <p class="text-gray-600">End: {{ $end_of_employment_date ?? 'Current' }}</p>
+                    <p class="text-gray-600">End: {{ $end_of_employment_date ?? 'N/A' }}</p>
                 </div>
 
                 <div class="space-y-2">
@@ -62,7 +81,11 @@
             </div>
 
             <div class="mt-4 flex justify-end">
-                <flux:button wire:click="close">Close</flux:button>
+                <flux:button variant="primary" 
+                             wire:click="close"
+                             class="w-full"
+                             >Close
+                </flux:button>
             </div>
         </div>
     </flux:modal>
