@@ -1,12 +1,5 @@
 <div>
-<<<<<<< HEAD
-    <flux:modal name="show-employee" class="w-full grid grid-cols-3 gap-4">
-=======
-    <flux:modal name="show-employee" 
-                class="md:w-full"
-                style="width: 500ch"
-                >
->>>>>>> feature/angelou/show-employee
+    <flux:modal name="show-employee" class="wd:w-full">
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">Employee Details</flux:heading>
@@ -15,7 +8,6 @@
             
             <div class="grid grid-cols-1 gap-4 justify-center">
                 @if ($image_path)
-<<<<<<< HEAD
                     <img src="{{ 'storage/'.$image_path }}" 
                          alt="Profile"
                          class="rounded rounded-full"
@@ -25,19 +17,6 @@
                         alt="Profile"
                         class="rounded rounded-full"
                         style="width: 25em; height: 25em;">
-=======
-                    <img src="{{'storage/'.$image_path}}" 
-                    alt="Profile"
-                    class="rounded rounded-full"
-                    style="height: 25em; width: 25em;"
-                    >
-                @else
-                    <img src="storage\images\no-photo.png" 
-                    alt="Profile"
-                    class="rounded rounded-full"
-                    style="height: 25em; width: 25em;"
-                    >
->>>>>>> feature/angelou/show-employee
                 @endif
             </div>
 
@@ -80,11 +59,7 @@
                 </div>
 
                 <div class="space-y-2">
-<<<<<<< HEAD
                     <h3 class="font-bold text-gray-700">Emergency Contact</h3>
-=======
-                    <h3 class="font-bold text-gray-700">Emergency Contact Person</h3>
->>>>>>> feature/angelou/show-employee
                     <p class="text-gray-600">Name: {{ $emergency_contact_person }}</p>
                     <p class="text-gray-600">Number: {{ $emergency_contact_number }}</p>
                 </div>
@@ -102,15 +77,7 @@
             </div>
 
             <div class="mt-4 flex justify-end">
-<<<<<<< HEAD
                 <flux:button variant="primary" class="w-full" wire:click="close">Close</flux:button>
-=======
-                <flux:button variant="primary" 
-                             wire:click="close"
-                             class="w-full"
-                             >Close
-                </flux:button>
->>>>>>> feature/angelou/show-employee
             </div>
         </div>
     </flux:modal>
