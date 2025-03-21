@@ -11,12 +11,16 @@ use App\Livewire\EmployeeUpdate;
 class Employees extends Component
 {
     use WithPagination;
-
+    
     public function render()
     {
-        return view('livewire.employees', [
+        return view('livewire.employees',[
             'employees' => Employee::paginate(7),
         ]);
+    }
+
+    public function mount() {
+        $this->employees = Employee::paginate(7);
     }
 
     public function edit($id) {
@@ -33,4 +37,7 @@ class Employees extends Component
         $this->dispatch('showEmployee', $id);
     }
 
+    public function showEmployees($selectedOffice, $selectedPosition, $search) {
+        
+    }
 }
