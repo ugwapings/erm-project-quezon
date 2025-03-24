@@ -5,9 +5,10 @@
                 <flux:heading size="xl" level="1">List of Employees</flux:heading>
                 <flux:subheading size="sm" class="mb-6">Manage List of Employees</flux:subheading>
             </div>
-            <div>
+            <div class="flex flex-row gap-x-6">
+                <livewire:employee-filter/>
                 <flux:modal.trigger name="create-employee">
-                    <flux:button>Add Employee</flux:button>
+                <flux:button>Add Employee</flux:button>
                 </flux:modal.trigger>
                 <livewire:employee-create />
                 <livewire:employee-update />

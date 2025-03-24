@@ -12,15 +12,35 @@ class Employees extends Component
 {
     use WithPagination;
     
-    public function render()
+    public $filters = [
+        'search' => ''
+    ];
+
+    protected $listeners = [
+        'filter-updated' => 'updateFilters', 
+    ];
+
+    public function updateFilters($filters)
     {
-        return view('livewire.employees',[
-            'employees' => Employee::paginate(7),
-        ]);
+        $this->filters['search'] = $filters['search'];
+        $this->resetPage();
     }
 
-    public function mount() {
-        $this->employees = Employee::paginate(7);
+    public function render()
+    {
+        $employees = Employee::query()
+            ->when($this->filters['search'], function ($query) {
+                $query->where(function ($q) {
+                    $q->where('first_name', 'like', '%' . $this->filters['search'] . '%')
+                      ->orWhere('middle_name', 'like', '%' . $this->filters['search'] . '%')
+                      ->orWhere('last_name', 'like', '%' . $this->filters['search'] . '%');
+                });
+            })
+            ->paginate(7);
+
+        return view('livewire.employees', [
+            'employees' => $employees,
+        ]);
     }
 
     public function edit($id) {
@@ -37,7 +57,4 @@ class Employees extends Component
         $this->dispatch('showEmployee', $id);
     }
 
-    public function showEmployees($selectedOffice, $selectedPosition, $search) {
-        
-    }
 }
