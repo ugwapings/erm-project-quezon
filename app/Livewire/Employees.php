@@ -13,34 +13,73 @@ class Employees extends Component
     use WithPagination;
     
     public $filters = [
-        'search' => ''
+        'search' => '',
+        'classification' => '',
+        'position' => '',
+        'office' => '',
     ];
+
+    public $paginationLimit = 7;
 
     protected $listeners = [
-        'filter-updated' => 'updateFilters', 
+        'update-search' => 'updateSearch',
+        'update-classification' => 'updateClassification',
+        'update-position' => 'updatePosition',
+        'update-office' => 'updateOffice',
     ];
-
-    public function updateFilters($filters)
-    {
-        $this->filters['search'] = $filters['search'];
-        $this->resetPage();
-    }
 
     public function render()
     {
         $employees = Employee::query()
-            ->when($this->filters['search'], function ($query) {
+            ->with('position', 'office')
+            ->when(strlen($this->filters['search']), function ($query) {
                 $query->where(function ($q) {
                     $q->where('first_name', 'like', '%' . $this->filters['search'] . '%')
                       ->orWhere('middle_name', 'like', '%' . $this->filters['search'] . '%')
                       ->orWhere('last_name', 'like', '%' . $this->filters['search'] . '%');
                 });
             })
-            ->paginate(7);
+            ->when($this->filters['classification'], function ($query){
+                $query->where('classification', $this->filters['classification']);
+            })
+            ->when($this->filters['position'], function ($query) {
+                $query->where('position_id', $this->filters['position']);
+            })
+            ->when($this->filters['office'], function ($query) {
+                $query->where('office_id', $this->filters['office']);
+            })
+            ->paginate($this->paginationLimit);
 
+            
         return view('livewire.employees', [
             'employees' => $employees,
         ]);
+    }
+
+    public function updateSearch($filters)
+    {
+        $this->filters['search'] = $filters;
+        $this->resetPage();
+    }
+    
+
+    public function updateClassification($classification){
+
+        $this->filters['classification'] = $classification;
+        $this->resetPage();
+    }
+
+
+    public function updatePosition($position)
+    {
+        $this->filters['position'] = $position;
+        $this->resetPage();
+    }
+
+    public function updateOffice($office)
+    {
+        $this->filters['office'] = $office;
+        $this->resetPage();
     }
 
     public function edit($id) {
