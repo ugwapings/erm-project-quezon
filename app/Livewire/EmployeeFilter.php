@@ -24,10 +24,20 @@ class EmployeeFilter extends Component
         'office' => ['except' => ''],
     ];
 
-    public function search(){
-        
-            $this->dispatch('update-search', $this->search);
+    public function mount()
+    {
+        $this->classification = '';
+        $this->position = '';
+        $this->office = '';
+        $this->search = '';
+    }
+
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'search') {
             $this->resetPage();
+            $this->dispatch('filter-updated', ['search' => $this->search]);
+        }
     }
     
     public function updatedClassification()
