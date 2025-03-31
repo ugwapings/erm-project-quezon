@@ -5,10 +5,11 @@ namespace App\Exports;
 use App\Models\Employee;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class EmployeesExport implements FromQuery, WithMapping, WithHeadings
+class EmployeesExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
 {
     use Exportable;
 
