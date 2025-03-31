@@ -1,5 +1,10 @@
 <?php
 
+use Carbon\Laravel\ServiceProvider;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Facade;
+use Maatwebsite\Excel\ExcelServiceProvider;
+
 return [
 
     /*
@@ -122,5 +127,18 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+
+    'providers' => ServiceProvider::defaultProviders()->merge([    
+        /*
+        * Package Service Providers...
+        */
+        ExcelServiceProvider::class,
+    ])->toArray(),
+
+    'aliases' => Facade::defaultAliases()->merge([
+        
+        'Excel' => Excel::class,
+    ])->toArray(),
 
 ];

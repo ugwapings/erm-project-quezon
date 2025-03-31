@@ -64,12 +64,7 @@ class Employees extends Component
             'employees' => $employees,
         ]);
     }
-
-    public function export() 
-    {
-        return Excel::download(new EmployeesExport, 'employees.xlsx');
-    }
-    
+   
     public function updateFilters($search)
     {
         $this->search = $search;  

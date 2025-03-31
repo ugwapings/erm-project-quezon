@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\Employees;
+use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EmployeesExport;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +17,10 @@ Route::view('dashboard', 'dashboard')
 Route::view('/employee', 'employee.index')
     ->middleware(['auth', 'verified'])
     ->name('employee');
+
+Route::get('employee/export', function () {
+    return Excel::download(new EmployeesExport, 'employees.xlsx');
+})->middleware(['auth', 'verified'])->name('export');
 
 Route::view('/position', 'position.index')
     ->middleware(['auth', 'verified'])

@@ -7,6 +7,7 @@
             </div>
             <div class="flex flex-row gap-x-6">
                 <livewire:employee-filter/>
+                <livewire:employee-export/>
                 <flux:modal.trigger name="create-employee">
                 <flux:button>Add Employee</flux:button>
                 </flux:modal.trigger>
