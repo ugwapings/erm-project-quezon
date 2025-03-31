@@ -18,7 +18,6 @@ class EmployeeDelete extends Component
     }
 
     #[On("deleteEmployee")]
-
     public function deleteEmployee($id) {
         $this->employee = Employee::find($id);
         $employee_id = $id;
