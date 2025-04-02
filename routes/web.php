@@ -9,6 +9,11 @@ use App\Exports\EmployeesExport;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::view('/employee', 'employee.index')
     ->middleware(['auth', 'verified'])
     ->name('employee');
