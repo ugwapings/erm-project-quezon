@@ -28,7 +28,7 @@
                             <td class="border px-4 py-2 text-center">{{ $employee->position->position_name }}</td>
                             <td class="border px-4 py-2 text-center">{{ $employee->classification }}</td>
                             <td class="border px-4 py-2 text-center">
-                                <div class="flex justify-center">
+                                <div class="flex justify-center gap-2">
                                     <flux:button variant="primary" wire:click="edit({{ $employee->id }})">@include('flux.icon.square-pen')</flux:button>
                                     <flux:button variant="danger" wire:click="delete({{ $employee->id }})">@include('flux.icon.eraser')</flux:button>
                                     <flux:button variant="ghost" wire:click="show({{ $employee->id }})">@include('flux.icon.eye')</flux:button>
