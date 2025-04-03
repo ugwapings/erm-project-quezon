@@ -56,7 +56,7 @@
                         <flux:input type="date" label="Employment Date" wire:model="employment_date" />
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="position_id" class="block text-sm font-medium text-gray-700">Position</label>
+                        <label for="position_id" class="block text-sm font-medium text-gray-700 dark:text-white">Position</label>
                             <select id="position_id" wire:model="position_id" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                 <option class="dark:bg-gray-800" value="">Select Position</option>
                                 @foreach ($positions as $position)
@@ -68,7 +68,7 @@
                             @enderror
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="office_id" class="block text-sm font-medium text-gray-700">Office</label>
+                        <label for="office_id" class="block text-sm font-medium text-gray-700 dark:text-white">Office</label>
                         <select id="office_id" wire:model="office_id" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option class="dark:bg-gray-800" value="">Select Office</option>
                             @foreach ($offices as $office)
@@ -80,7 +80,7 @@
                         @enderror
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="classification" class="block text-sm font-medium text-gray-700">Classification</label>
+                        <label for="classification" class="block text-sm font-medium text-gray-700 dark:text-white">Classification</label>
                             <select id="classification" wire:model="classification" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                 <option class="dark:bg-gray-800" value="">Select Classification</option>
                                 <option class="dark:bg-gray-800" value="Job Order">Job Order</option>
@@ -94,7 +94,7 @@
                             @enderror
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                        <label for="status" class="block text-sm font-medium text-gray-700 dark:text-white">Status</label>
                             <select id="status" wire:model="status" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                 <option class="dark:bg-gray-800" value="">Select Status</option>
                                 <option class="dark:bg-gray-800" value="Employed">Employed</option>

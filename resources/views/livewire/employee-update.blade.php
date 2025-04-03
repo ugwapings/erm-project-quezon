@@ -58,11 +58,11 @@
                         <flux:input type="date" label="Employment Date" wire:model="employment_date" />
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="position_id" class="block text-sm font-medium text-gray-700">Position</label>
-                            <select id="position_id" wire:model="position_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                <option value="">Select Position</option>
+                        <label for="position_id" class="block text-sm font-medium text-gray-700 dark:text-white dark:text-white">Position</label>
+                            <select id="position_id" wire:model="position_id" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option class="dark:bg-gray-800" value="">Select Position</option>
                                 @foreach ($positions as $position)
-                                    <option value="{{ $position->id }}">{{ $position->position_name }}</option>
+                                    <option class="dark:bg-gray-800" value="{{ $position->id }}">{{ $position->position_name }}</option>
                                 @endforeach
                             </select>
                             @error('position_id')
@@ -70,11 +70,11 @@
                             @enderror
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="office_id" class="block text-sm font-medium text-gray-700">Office</label>
-                        <select id="office_id" wire:model="office_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            <option value="">Select Office</option>
+                        <label for="office_id" class="block text-sm font-medium text-gray-700 dark:text-white">Office</label>
+                        <select id="office_id" wire:model="office_id" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option class="dark:bg-gray-800" value="">Select Office</option>
                             @foreach ($offices as $office)
-                                <option value="{{ $office->id }}">{{ $office->office_name }}</option>
+                                <option class="dark:bg-gray-800" value="{{ $office->id }}">{{ $office->office_name }}</option>
                             @endforeach
                         </select>
                         @error('office_id')
@@ -82,26 +82,26 @@
                         @enderror
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="classification" class="block text-sm font-medium text-gray-700">Classification</label>
-                            <select id="classification" wire:model="classification" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                <option value="">Select Classification</option>
-                                <option value="Job Order">Job Order</option>
-                                <option value="Regular">Regular</option>
-                                <option value="Casual">Casual</option>
-                                <option value="Honorarium">Honorarium</option>
-                                <option value="Co-Terminus">Co-Terminus</option>
+                        <label for="classification" class="block text-sm font-medium text-gray-700 dark:text-white">Classification</label>
+                            <select id="classification" wire:model="classification" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option class="dark:bg-gray-800" value="">Select Classification</option>
+                                <option class="dark:bg-gray-800" value="Job Order">Job Order</option>
+                                <option class="dark:bg-gray-800" value="Regular">Regular</option>
+                                <option class="dark:bg-gray-800" value="Casual">Casual</option>
+                                <option class="dark:bg-gray-800" value="Honorarium">Honorarium</option>
+                                <option class="dark:bg-gray-800" value="Co-Terminus">Co-Terminus</option>
                             </select>
                             @error('classification')
                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                             @enderror
                     </div>
                     <div class="space-y-2 space-x-6">
-                        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-                            <select id="status" wire:model="status" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                <option value="">Select Status</option>
-                                <option value="Employed">Employed</option>
-                                <option value="Retired">Retired</option>
-                                <option value="Separate">Separate</option>
+                        <label for="status" class="block text-sm font-medium text-gray-700 dark:text-white">Status</label>
+                            <select id="status" wire:model="status" class=" border mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option class="dark:bg-gray-800" value="">Select Status</option>
+                                <option class="dark:bg-gray-800" value="Employed">Employed</option>
+                                <option class="dark:bg-gray-800" value="Retired">Retired</option>
+                                <option class="dark:bg-gray-800" value="Separate">Separate</option>
                             </select>
                             @error('status')
                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
