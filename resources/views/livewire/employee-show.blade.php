@@ -8,12 +8,12 @@
             
             <div class="grid grid-cols-1 gap-4 justify-center">
                 @if ($image_path)
-                    <img src="{{ 'storage/'.$image_path }}" 
+                    <img src="{{ asset('storage/' . $image_path) }}" 
                          alt="Profile"
                          class="rounded rounded-full"
                          style="width: 25em; height: 25em;">
                 @else
-                    <img src="storage\images\no-photo.png" 
+                    <img src="{{ asset('storage/images/no-photo.png') }}" 
                         alt="Profile"
                         class="rounded rounded-full"
                         style="width: 25em; height: 25em;">
@@ -22,57 +22,57 @@
 
             <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Employee ID</h3>
-                    <p class="text-gray-600">{{ $employee_id_fill }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Employee ID</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $employee_id_fill }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Full Name</h3>
-                    <p class="text-gray-600">{{ $first_name }} {{ $middle_name }} {{ $last_name }}</p>
-                    <p class="text-gray-600">suffix: {{ $suffix }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Full Name</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $first_name }} {{ $middle_name }} {{ $last_name }}</p>
+                    <p class="text-gray-600 dark:text-white">suffix: {{ $suffix }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Position</h3>
-                    <p class="text-gray-600">{{ $employee->position->position_name ?? 'N/A' }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Position</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $employee->position->position_name ?? 'N/A' }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Office</h3>
-                    <p class="text-gray-600">{{ $employee->office->office_name ?? 'N/A' }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Office</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $employee->office->office_name ?? 'N/A' }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Classification</h3>
-                    <p class="text-gray-600">{{ $employee->classification ?? 'N/A' }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Classification</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $employee->classification ?? 'N/A' }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Status</h3>
-                    <p class="text-gray-600">{{ $employee->status ?? 'N/A' }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Status</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $employee->status ?? 'N/A' }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Contact Information</h3>
-                    <p class="text-gray-600">Number: {{ $contact_number }}</p>
-                    <p class="text-gray-600">Address: {{ $address }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Contact Information</h3>
+                    <p class="text-gray-600 dark:text-white">Number: {{ $contact_number }}</p>
+                    <p class="text-gray-600 dark:text-white">Address: {{ $address }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Emergency Contact</h3>
-                    <p class="text-gray-600">Name: {{ $emergency_contact_person }}</p>
-                    <p class="text-gray-600">Number: {{ $emergency_contact_number }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Emergency Contact</h3>
+                    <p class="text-gray-600 dark:text-white">Name: {{ $emergency_contact_person }}</p>
+                    <p class="text-gray-600 dark:text-white">Number: {{ $emergency_contact_number }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Employment Dates</h3>
-                    <p class="text-gray-600">Start: {{ $employment_date }}</p>
-                    <p class="text-gray-600">End: {{ $end_of_employment_date ?? 'N/A' }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Employment Dates</h3>
+                    <p class="text-gray-600 dark:text-white">Start: {{ $employment_date }}</p>
+                    <p class="text-gray-600 dark:text-white">End: {{ $end_of_employment_date ?? 'N/A' }}</p>
                 </div>
 
                 <div class="space-y-2">
-                    <h3 class="font-bold text-gray-700">Date of Birth</h3>
-                    <p class="text-gray-600">{{ $date_of_birth }}</p>
+                    <h3 class="font-bold text-gray-700 dark:text-white">Date of Birth</h3>
+                    <p class="text-gray-600 dark:text-white">{{ $date_of_birth }}</p>
                 </div>
             </div>
 
