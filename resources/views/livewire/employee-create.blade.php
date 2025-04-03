@@ -1,5 +1,5 @@
 <div>
-    <flux:modal name="create-employee" class="md:w-3/4">
+    <flux:modal name="create-employee">
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">Create new Employee</flux:heading>

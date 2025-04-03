@@ -11,17 +11,11 @@ use Livewire\WithPagination;
 class EmployeeFilter extends Component
 {
     use WithPagination;
-
-    public $classification = '';
-    public $position = '';
-    public $office = '';
+    
     public $search = '';
 
     protected $queryString = [
-        'search' => ['except' => ''],
-        'classification' => ['except' => ''],
-        'position' => ['except' => ''],
-        'office' => ['except' => ''],
+        'search' => ['except' => '']
     ];
 
     
@@ -40,26 +34,7 @@ class EmployeeFilter extends Component
             $this->dispatch('filter-updated', $this->search);
         }
     }
-    
-    public function updatedClassification()
-    {
-        $this->dispatch('update-classification', $this->classification);
-        $this->resetPage();
-    }
-
-    public function updatedPosition()
-    {
-        $this->dispatch('update-position', $this->position);
-        $this->resetPage();
-    }
-
-    public function updatedOffice()
-    {
-        $this->dispatch('update-office', $this->office);
-        $this->resetPage();
-    }
-
-    public function render()
+        public function render()
     {
         return view('livewire.employee-filter', [
             'employees' => Employee::all(),

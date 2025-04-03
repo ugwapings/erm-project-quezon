@@ -6,19 +6,20 @@
                 <flux:subheading size="sm" class="mb-6">Manage List of Employees</flux:subheading>
             </div>
             
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-2">
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <livewire:employee-export />
-                    </div>
+            <div class="flex flex-wrap items-center mb-4 gap-4">
+                <div class="flex-1">
+                    <livewire:employee-filter/>
+                </div>
+                <div class="flex items-center gap-4">
                     <flux:modal.trigger name="create-employee">
                         <flux:button>Add Employee</flux:button>
                     </flux:modal.trigger>
+                    <livewire:employee-export />
                 </div>
-                
-                <div class="md:col-span-3">
-                    <livewire:employee-filter />
-                </div>
+            </div> 
+            
+            <div>
+                <livewire:employee-categories />
             </div>
         </div>
         
